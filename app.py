@@ -19,7 +19,7 @@ def linebot():
         tk = json_data['events'][0]['replyToken']                 # 取得 reply token
         msg = json_data['events'][0]['message']['text']           # 取得使用者發送的訊息
         print(f'使用者傳送訊息: {msg}')                             # 印出使用者發送的訊息
-        # line_bot_api.reply_message(tk, TextSendMessage(text=msg)) # 回傳訊息(目前單純重複使用者的訊息)
+        line_bot_api.reply_message(tk, TextSendMessage(text=msg)) # 回傳訊息(目前單純重複使用者的訊息)
     except Exception as e:
         print(f"捕獲到異常：{type(e).__name__}: {str(e)}")
     return 'OK'
