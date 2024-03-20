@@ -17,7 +17,7 @@ def linebot():
     return 'OK'
 
 
-@app.route("/", methods=['POST'])
+@app.route("/", methods=['GET'])
 def linebot():
     body = request.get_data(as_text=True)
     json_data = json.loads(body)
