@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 # 假設有一個 Webhook 接收使用者的訊息，然後根據訊息的內容執行不同的動作
 # 這裡假設使用者發送 "預約羽球課" 來預約課程
-@handler.add(MessageEvent, message=TextMessage)
+@app.route(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_id = event.source.user_id
     message_text = event.message.text
