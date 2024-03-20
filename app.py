@@ -14,9 +14,9 @@ app = Flask(__name__)
 app.config["DEBUG"] = True
 
 # Channel access token
-line_bot_api = LineBotApi('你的token')
+line_bot_api = LineBotApi('Hr45BSwnE3P+UMQ1ELzQpCno3aLVJSs4Ld23ZJjQeKsCaVgQ939Q+gHxXFOqReoBcvDe3rN3V+Cep8swlWgGBdmf2g9/shMBwIQMXReDfavA7zKXdRlmh3zMIH+41NaauoUi00ICifrG3r4f9E5ZPAdB04t89/1O/w1cDnyilFU=')
 # Channel secret
-handler = WebhookHandler('你的 Webhook token')
+handler = WebhookHandler('cae6d52bb4b5024101832a3603304571')
 
 admin_userid = '你的 userid'
 
