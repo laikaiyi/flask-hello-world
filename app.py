@@ -27,6 +27,14 @@ def linebot():
     except Exception as e:
         print(f"捕獲到異常：{type(e).__name__}: {str(e)}")
     return 'OK'
+@app.route('/')
+def send_notification():
+    # 每週日向學生發送是否預約上課的通知
+    for student_id, is_reserved in students.items():
+        if is_reserved:
+            line_bot_api.push_message(student_id, TextSendMessage(text="本周日請準時參加羽球課程！"))
+        else:
+            line_bot_api.push_message(student_id, TextSendMessage(text="本周日沒有收到您的羽球課程預約，請盡快預約！"))
 
 @app.route('/')
 def hello_world():
