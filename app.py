@@ -37,7 +37,7 @@ def callback():
 
 
 # 處理訊息
-@handler.add(MessageEvent, message=TextMessage)
+@app.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
     try:
@@ -49,12 +49,12 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage('你所使用的OPENAI API key額度可能已經超過，請於後台Log內確認錯誤訊息'))
         
 
-@handler.add(PostbackEvent)
+@app.add(PostbackEvent)
 def handle_message(event):
     print(event.postback.data)
 
 
-@handler.add(MemberJoinedEvent)
+@appr.add(MemberJoinedEvent)
 def welcome(event):
     uid = event.joined.members[0].user_id
     gid = event.source.group_id
