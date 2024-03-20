@@ -20,10 +20,37 @@ def linebot():
         msg = json_data['events'][0]['message']['text']   # 取得使用者發送的訊息
         if msg == "預約羽球課":
             students[user_id] = True  # 將使用者加入到預約名單中
-            response_text = "已收到您的預約，謝謝！"
+            response_text = "好的，已收到您的預約。"
+            # 傳送預約日期表單給學生填寫
+            buttons_template = TemplateSendMessage(
+                alt_text='預約日期表單',
+                template=ButtonsTemplate(
+                    title='預約日期表單',
+                    text='請選擇您想要預約的日期：',
+                    actions=[
+                        PostbackTemplateAction(
+                            label='3月5日',
+                            data='booking_date_2024-03-05'
+                        ),
+                        PostbackTemplateAction(
+                            label='3月12日',
+                            data='booking_date_2024-03-12'
+                        ),
+                        PostbackTemplateAction(
+                            label='3月19日',
+                            data='booking_date_2024-03-19'
+                        ),
+                        PostbackTemplateAction(
+                            label='3月26日',
+                            data='booking_date_2024-03-26'
+                        )
+                    ]
+                )
+            )
+            line_bot_api.reply_message(tk, [TextSendMessage(text=response_text), buttons_template])
         else:
             response_text = "感謝您的訊息！"
-        line_bot_api.reply_message(tk, TextSendMessage(text=response_text))      # 回傳訊息
+            line_bot_api.reply_message(tk, TextSendMessage(text=response_text))      # 回傳訊息
     except Exception as e:
         print(f"捕獲到異常：{type(e).__name__}: {str(e)}")
     return 'OK'
