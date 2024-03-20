@@ -5,19 +5,8 @@ import json
 
 
 app = Flask(__name__)
+
 @app.route("/", methods=['POST'])
-def linebot():
-    body = request.get_data(as_text=True)
-    json_data = json.loads(body)
-    try:
-        
-        line_bot_api.reply_message(tk, TextSendMessage(text=response_text))      # 回傳訊息
-    except Exception as e:
-        print(f"捕獲到異常：{type(e).__name__}: {str(e)}")
-    return 'OK'
-
-
-@app.route("/", methods=['GET'])
 def linebot():
     body = request.get_data(as_text=True)
     json_data = json.loads(body)
