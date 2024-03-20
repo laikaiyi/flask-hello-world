@@ -5,23 +5,6 @@ import json
 
 
 app = Flask(__name__)
-def reserve_class(student_id):
-    # 在這裡實現預約課程的相關邏輯，例如儲存學生的預約狀態到資料庫中等
-
-# 每週日向學生發送是否預約上課的通知
-def send_notification():
-    today = datetime.date.today()
-    if today.weekday() == 6:  # 檢查今天是否是週日 (週日是星期天，weekday() 回傳的是 6)
-        # 在這裡實現發送通知的相關邏輯，例如從資料庫中取得預約狀態，然後發送通知給學生
-
-        # 假設我們有一個名為 students 的列表，其中包含所有學生的 Line 使用者 ID
-        students = ['student1_id', 'student2_id', 'student3_id']
-        for student_id in students:
-            message = TextSendMessage(text="請問您這週是否預約上羽球課程？")
-            try:
-                line_bot_api.push_message(student_id, messages=message)
-            except LineBotApiError as e:
-                print("發送訊息時發生錯誤:", e)
 
 # 假設有一個 Webhook 接收使用者的訊息，然後根據訊息的內容執行不同的動作
 # 這裡假設使用者發送 "預約羽球課" 來預約課程
